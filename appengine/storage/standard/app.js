@@ -81,6 +81,17 @@ app.post('/upload', multer.single('file'), (req, res, next) => {
   blobStream.end(req.file.buffer);
 });
 
+app.get('/listFiles', async(req, res) => {
+   const [files] = await storage.bucket(process.env.GCLOUD_STORAGE_BUCKET).getFiles();
+   var fileNames = [];   
+    console.log('Files:');
+    files.forEach(file => {
+      fileNames.push(file.metadata)
+      console.log(file.name);
+    });
+   res.status(200).send(`files listed ${fileNames}`);
+});
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
