@@ -15,5 +15,6 @@
 runtime: nodejs14
 
 env_variables:
-  GCLOUD_STORAGE_BUCKET: YOUR_BUCKET_NAME
+  #GCLOUD_STORAGE_BUCKET: YOUR_BUCKET_NAME
+  GCLOUD_STORAGE_BUCKET: oval-sunset-309806
 # [END gae_storage_yaml]
